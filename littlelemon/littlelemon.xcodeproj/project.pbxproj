@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AE6A74F29EAD9D000A0ED0F /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A74E29EAD9D000A0ED0F /* Onboarding.swift */; };
+		3AE6A75129EAE42800A0ED0F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A75029EAE42800A0ED0F /* Home.swift */; };
+		3AE6A75329EAE53600A0ED0F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A75229EAE53600A0ED0F /* Menu.swift */; };
+		3AE6A75529EAF14B00A0ED0F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A75429EAF14B00A0ED0F /* UserProfile.swift */; };
 		3AFDA4DF29E9BE1800D03EA9 /* littlelemonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDA4DE29E9BE1800D03EA9 /* littlelemonApp.swift */; };
-		3AFDA4E129E9BE1800D03EA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDA4E029E9BE1800D03EA9 /* ContentView.swift */; };
 		3AFDA4E329E9BE1B00D03EA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFDA4E229E9BE1B00D03EA9 /* Assets.xcassets */; };
 		3AFDA4E629E9BE1B00D03EA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFDA4E529E9BE1B00D03EA9 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3AE6A74E29EAD9D000A0ED0F /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		3AE6A75029EAE42800A0ED0F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		3AE6A75229EAE53600A0ED0F /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		3AE6A75429EAF14B00A0ED0F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		3AFDA4DB29E9BE1700D03EA9 /* littlelemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = littlelemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFDA4DE29E9BE1800D03EA9 /* littlelemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = littlelemonApp.swift; sourceTree = "<group>"; };
-		3AFDA4E029E9BE1800D03EA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3AFDA4E229E9BE1B00D03EA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AFDA4E529E9BE1B00D03EA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +58,10 @@
 			isa = PBXGroup;
 			children = (
 				3AFDA4DE29E9BE1800D03EA9 /* littlelemonApp.swift */,
-				3AFDA4E029E9BE1800D03EA9 /* ContentView.swift */,
+				3AE6A74E29EAD9D000A0ED0F /* Onboarding.swift */,
+				3AE6A75029EAE42800A0ED0F /* Home.swift */,
+				3AE6A75229EAE53600A0ED0F /* Menu.swift */,
+				3AE6A75429EAF14B00A0ED0F /* UserProfile.swift */,
 				3AFDA4E229E9BE1B00D03EA9 /* Assets.xcassets */,
 				3AFDA4E429E9BE1B00D03EA9 /* Preview Content */,
 			);
@@ -137,7 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AFDA4E129E9BE1800D03EA9 /* ContentView.swift in Sources */,
+				3AE6A74F29EAD9D000A0ED0F /* Onboarding.swift in Sources */,
+				3AE6A75129EAE42800A0ED0F /* Home.swift in Sources */,
+				3AE6A75529EAF14B00A0ED0F /* UserProfile.swift in Sources */,
+				3AE6A75329EAE53600A0ED0F /* Menu.swift in Sources */,
 				3AFDA4DF29E9BE1800D03EA9 /* littlelemonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

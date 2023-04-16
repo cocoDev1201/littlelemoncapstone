@@ -13,6 +13,9 @@ struct Menu: View {
             Text("Little Lemon Bistro")
             Text("Chicago")
             Text("We are best bistro in the town.")
+            List {
+                // menu items
+            }
         }
     }
 }
