@@ -27,12 +27,12 @@ struct Onboarding: View {
                 Header()
                 Hero()
                     .padding()
-                    .background(Color.primary.Color1)
+                    .background(Color.primaryColor1)
                     .frame(maxWidth: .infinity, maxHeight: 240)
                 }
             
             VStack {
-                NavigationLink("Home", destination: Home(), isActive: $isLoggedIn) { }
+                NavigationLink(destination: Home(), isActive: $isLoggedIn) { }
                 Text("First name *")
                     .onboardingTextStyle()
                 TextField("First Name", text: $firstName)
@@ -44,7 +44,7 @@ struct Onboarding: View {
                     .keyboardType(.emailAddress)
                 }
             .textFieldStyle(.roundedBorder)
-            .disabledAutocorrection(true)
+            .disableAutocorrection(true)
             .padding()
                 
                 if viewModel.errorMessageShow {
@@ -65,20 +65,20 @@ struct Onboarding: View {
                         firstName = ""
                         lastName = ""
                         email = ""
-                        isLoggedIn = ""
+                        isLoggedIn = true
                     }
                 }
                 .buttonStyle(ButtonStyleYellowColorWide())
             
-            Spacer()
+                Spacer()
         }
         .offset(y: contentOffset.height)
         .onReceive(NotificationCenter.default.publisher(for:UIResponder.keyboardWillShowNotification)) { notification in
             withAnimation {
-                let keyboardRect = notification.UserInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+                let keyboardRect = notification.UserInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
                 let keyboardHeight = keyboardRect.height
                 self.isKeyboardVisible = true
-                self.contentOffset = CGSize(width: 0, height: -keyboardHeight / 2 + 50)
+                self.contentOffset = CGSize(width: 0, height: Int(-keyboardHeight) / 2 + 50)
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { notification in
@@ -89,7 +89,7 @@ struct Onboarding: View {
         }
     }
         .onAppear() {
-            if UserDefaults.standar.bool(forKey: kIsLoggedIn) {
+            if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
                 isLoggedIn = true
         }
     }

@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct MenuItem: Decodable {
+struct MenuItem: Codable, Identifiable {
+    var id = UUID()
     var title: String
     var image: String
     var price: String
@@ -18,3 +19,4 @@ struct MenuItem: Decodable {
         case price = "price"
     }
 }
+

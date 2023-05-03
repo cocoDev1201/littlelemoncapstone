@@ -80,8 +80,8 @@
 		3A84EA9829F5D74900F4118A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3A84EA9429F5D5CE00F4118A /* MenuList.swift */,
 				3A84EA9629F5D5E200F4118A /* MenuItem.swift */,
+				3A84EA9429F5D5CE00F4118A /* MenuList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

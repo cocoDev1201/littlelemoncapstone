@@ -8,13 +8,32 @@
 import SwiftUI
 
 struct Hero: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                VStack {
+                    Text("Little Lemon")
+                        .foregroundColor(Color.primaryColor2)
+                        .font(.displayFont())
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("Chigago")
+                        .foregroundColor(.white)
+                        .font(.subTitleFont())
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 5)
+                    Text()
+                }
+            }
+        }
     }
 }
 
 struct Hero_Previews: PreviewProvider {
     static var previews: some View {
         Hero()
+            .padding()
+            .background(Color.primaryColor1)
+            .frame(maxWidth: .infinity, maxHeight: 240)
     }
 }

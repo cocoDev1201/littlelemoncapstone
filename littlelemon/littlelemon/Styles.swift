@@ -80,6 +80,21 @@ struct ButtonStylePrimaryColor1: ButtonStyle {
     }
 }
 
+struct ButtonStylePrimaryColorReverse: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(configuration.isPressed ? .white : Color.primaryColor1)
+            .padding(10)
+            .background(configuration.isPressed ? Color.primaryColor1 : .white)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.primaryColor1, lineWidth: 1)
+            )
+            .padding(.horizontal)
+    }
+}
+
 struct ButtonToggleStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
