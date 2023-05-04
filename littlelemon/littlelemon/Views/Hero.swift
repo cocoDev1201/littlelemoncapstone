@@ -22,8 +22,19 @@ struct Hero: View {
                         .font(.subTitleFont())
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 5)
-                    Text()
+                    Text("""
+                        We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.
+                        """)
+                    .foregroundColor(.white)
+                    .font(.leadText())
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                Image("hero-image")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: 120, maxHeight: 140)
+                    .clipShape(Rectangle())
+                    .cornerRadius(16)
             }
         }
     }

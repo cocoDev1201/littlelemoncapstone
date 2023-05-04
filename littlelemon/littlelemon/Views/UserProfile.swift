@@ -75,13 +75,13 @@ struct UserProfile: View {
             
             HStack {
                 Button("Discard Changes") {
-                    firstName = viewModel.firstName
+                    firstName = $viewModel.firstName
                     lastName = viewModel.lastName
                     email = viewModel.email
                 }
                 
                 Button("Save Changes") {
-                    if viewModel.validateUserInput(firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber) {
+                    if viewModel.validateUserInput(firstName: firstName, lastName: lastName, email: email) {
                         UserDefaults.standard.set(firstName, forKey: kFirstName)
                         UserDefaults.standard.set(lastName, forKey: kLastName)
                         UserDefaults.standard.set(email, forKey: kEmail)
@@ -99,8 +99,8 @@ struct UserProfile: View {
                 }
             }
         }
-        .onAppear() {
-            firstName = viewModel.firstName
+        .onAppear {
+            firstName = $viewModel.firstName
             lastName = viewModel.lastName
             email = viewModel.email
         }
