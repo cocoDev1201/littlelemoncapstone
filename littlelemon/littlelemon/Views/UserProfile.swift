@@ -75,10 +75,12 @@ struct UserProfile: View {
             
             HStack {
                 Button("Discard Changes") {
-                    firstName = $viewModel.firstName
+                    firstName = viewModel.firstName
                     lastName = viewModel.lastName
                     email = viewModel.email
+                    self.presentation.wrappedValue.dismiss()
                 }
+                .buttonStyle(ButtonStylePrimaryColorReverse())
                 
                 Button("Save Changes") {
                     if viewModel.validateUserInput(firstName: firstName, lastName: lastName, email: email) {
@@ -98,9 +100,10 @@ struct UserProfile: View {
                         .padding(.leading)
                 }
             }
+            
         }
         .onAppear {
-            firstName = $viewModel.firstName
+            firstName = viewModel.firstName
             lastName = viewModel.lastName
             email = viewModel.email
         }

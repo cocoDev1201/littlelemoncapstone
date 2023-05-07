@@ -75,7 +75,7 @@ struct Onboarding: View {
         .offset(y: contentOffset.height)
         .onReceive(NotificationCenter.default.publisher(for:UIResponder.keyboardWillShowNotification)) { notification in
             withAnimation {
-                let keyboardRect = notification.UserInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+                let keyboardRect = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
                 let keyboardHeight = keyboardRect.height
                 self.isKeyboardVisible = true
                 self.contentOffset = CGSize(width: 0, height: Int(-keyboardHeight) / 2 + 50)

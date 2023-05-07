@@ -66,11 +66,11 @@
 			isa = PBXGroup;
 			children = (
 				3AE6A74E29EAD9D000A0ED0F /* Onboarding.swift */,
+				3AE6A75229EAE53600A0ED0F /* Menu.swift */,
 				3A8914D12A04773100DA845D /* MainScreen.swift */,
 				3A603CDC29FD5344000CAC4A /* Header.swift */,
 				3A603CDA29FD5339000CAC4A /* Hero.swift */,
 				3AE6A75029EAE42800A0ED0F /* Home.swift */,
-				3AE6A75229EAE53600A0ED0F /* Menu.swift */,
 				3A8914D42A04788800DA845D /* DetailItem.swift */,
 				3A8914D62A04789C00DA845D /* FoodItem.swift */,
 				3AE6A75429EAF14B00A0ED0F /* UserProfile.swift */,

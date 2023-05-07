@@ -18,7 +18,7 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home().environment(\.managedObjectContext, persistence.container.viewContext)
+        Home().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }
 
