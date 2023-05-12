@@ -24,14 +24,16 @@ struct UserProfile: View {
             NavigationLink(destination: Onboarding(), isActive: $isLoggedOut) { }
             
             VStack(spacing: 5) {
-                
                 VStack {
                     Text("Personal information")
                         .onboardingTextStyle()
                     HStack(spacing: 0) {
                         Image("profile")
                             .resizable()
-                            .scaledToFit()
+                            .aspectRatio( contentMode: .fit)
+                            .frame(maxHeight: 75)
+                            .clipShape(Circle())
+                            .padding(.trailing)
                         Button("Change") { }
                             .buttonStyle(ButtonStylePrimaryColor1())
                         Button("Remove") { }
@@ -58,6 +60,7 @@ struct UserProfile: View {
                     TextField("E-mail", text: $email)
                         .keyboardType(.emailAddress)
                 }
+                
             }
             .textFieldStyle(.roundedBorder)
             .disableAutocorrection(true)

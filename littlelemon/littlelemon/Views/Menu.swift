@@ -11,50 +11,108 @@ import CoreData
 struct Menu: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-
-    @State private var menuItems = [MenuItem]()
+    
+    @State var startersIsEnabled = true
+    @State var mainsIsEnabled = true
+    @State var dessertsIsEnabled = true
+    @State var drinksIsEnabled = true
+    
+    @State var searchText = ""
+        
+    @State var loaded = false
+    
+    @State var isKeyboardVisible = false
+    
+    init() {
+            UITextField.appearance().clearButtonMode = .whileEditing
+        }
     
     var body: some View {
-        VStack {
-            Text("Little Lemon Bistro")
-            Text("Chicago")
-            Text("We are best bistro in the town.")
-            List {
-                // menu items
+        NavigationView {
+            VStack {
+                VStack {
+                    if !isKeyboardVisible {
+                        withAnimation() {
+                            Hero()
+                                .frame(maxHeight: 180)
+                        }
+                    }
+                    TextField("Search Menu", text: $searchText)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding()
+                .background(Color.primaryColor1)
+                
+                Text("Order for delivery!")
+                    .font(.sectionTitle())
+                    .foregroundColor(.highlightColor2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top)
+                    .padding(.leading)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 20) {
+                        Toggle("Starters", isOn: $startersIsEnabled)
+                        Toggle("Mains", isOn: $mainsIsEnabled)
+                        Toggle("Desserts", isOn: $dessertsIsEnabled)
+                        Toggle("Drinks", isOn: $drinksIsEnabled)
+                    }
+                    .toggleStyle(MyToggleStyle())
+                    .padding(.horizontal)
+                }
+                FetchedObjects(predicate: buildPredicate(),
+                               sortDescriptors: buildSortDescriptors()) {
+                    (dishes: [Dish]) in
+                    List(dishes) { dish in
+                        NavigationLink(destination: DetailItem(dish: dish)) {
+                            FoodItem(dish: dish)
+                        }
+                    }
+                    .listStyle(.plain)
+                }
+            }
+        }
+        .onAppear {
+            if !loaded {
+                MenuList.getMenuData(viewContext: viewContext)
+                loaded = true
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+            withAnimation {
+                self.isKeyboardVisible = true
             }
             
         }
-        .task {
-           await getMenuData()
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { notification in
+            withAnimation {
+                self.isKeyboardVisible = false
+            }
         }
     }
     
-    func getMenuData() async {
-        
-        // create Url
-        
-            let serverUrlString = "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
-            guard let url = URL(string: serverUrlString) else { return }
-        
-            let urlRequest = URLRequest(url: url)
-        
-        // fetch data from the url
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            
-            if let decodedResponse = try? JSONDecoder().decode([menuItems].self, from: data) {
-                MenuItem = decodedResponse
-            }
-        } catch {
-            print("fdlkfs")
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+            return [NSSortDescriptor(key: "title",
+                                      ascending: true,
+                                      selector:
+                                        #selector(NSString.localizedStandardCompare))]
         }
-     
+    
+    func buildPredicate() -> NSCompoundPredicate {
+            let search = searchText == "" ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+            let starters = !startersIsEnabled ? NSPredicate(format: "category != %@", "starters") : NSPredicate(value: true)
+            let mains = !mainsIsEnabled ? NSPredicate(format: "category != %@", "mains") : NSPredicate(value: true)
+            let desserts = !dessertsIsEnabled ? NSPredicate(format: "category != %@", "desserts") : NSPredicate(value: true)
+            let drinks = !drinksIsEnabled ? NSPredicate(format: "category != %@", "drinks") : NSPredicate(value: true)
+
+            let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [search, starters, mains, desserts, drinks])
+            return compoundPredicate
+        }
 }
 
 struct Menu_Previews: PreviewProvider {
     static var previews: some View {
-        Menu()
+        Menu().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }
 

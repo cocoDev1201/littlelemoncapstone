@@ -22,30 +22,27 @@ struct Onboarding: View {
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
-            
-            VStack {
-                Header()
-                Hero()
-                    .padding()
-                    .background(Color.primaryColor1)
-                    .frame(maxWidth: .infinity, maxHeight: 240)
+                VStack {
+                    Header()
+                    Hero()
+                        .padding()
+                        .background(Color.primaryColor1)
+                        .frame(maxWidth: .infinity, maxHeight: 240)
+                VStack {
+                    NavigationLink(destination: Home(), isActive: $isLoggedIn) { }
+                    Text("First name *")
+                        .onboardingTextStyle()
+                    TextField("First Name", text: $firstName)
+                    Text("Last name *")
+                        .onboardingTextStyle()
+                    TextField("Last Name", text: $lastName)
+                    Text("E-mail *")
+                    TextField("Email", text: $email)
+                        .keyboardType(.emailAddress)
                 }
-            
-            VStack {
-                NavigationLink(destination: Home(), isActive: $isLoggedIn) { }
-                Text("First name *")
-                    .onboardingTextStyle()
-                TextField("First Name", text: $firstName)
-                Text("Last name *")
-                    .onboardingTextStyle()
-                TextField("Last Name", text: $lastName)
-                Text("E-mail *")
-                TextField("Email", text: $email)
-                    .keyboardType(.emailAddress)
-                }
-            .textFieldStyle(.roundedBorder)
-            .disableAutocorrection(true)
-            .padding()
+                .textFieldStyle(.roundedBorder)
+                .disableAutocorrection(true)
+                .padding()
                 
                 if viewModel.errorMessageShow {
                     withAnimation() {
@@ -93,8 +90,9 @@ struct Onboarding: View {
                 isLoggedIn = true
         }
     }
-}
+    }
         .navigationBarBackButtonHidden()
+}
 }
     
 struct Onboarding_Previews: PreviewProvider {
