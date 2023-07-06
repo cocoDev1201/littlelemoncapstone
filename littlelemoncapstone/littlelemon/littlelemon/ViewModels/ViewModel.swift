@@ -12,21 +12,23 @@ public let kFirstName = "first name key"
 public let kLastName = "last name key"
 public let kEmail = "e-mail key"
 public let kIsLoggedIn = "kIsLoggedIn"
+public let kPhoneNumber = "phone number key"
 
-public let kOrderStatus = "order statuses key"
+public let kOrderStatuses = "order statuses key"
 public let kPasswordChanges = "password changes key"
 public let kSpecialOffers = "special offers key"
 public let kNewsletter = "news letter key"
 
 class ViewModel: ObservableObject {
     
-    @Published var firsName = UserDefaults.standard.string(forKey: kFirstName) ?? ""
+    @Published var firstName = UserDefaults.standard.string(forKey: kFirstName) ?? ""
     @Published var lastName = UserDefaults.standard.string(forKey: kLastName) ?? ""
     @Published var email = UserDefaults.standard.string(forKey: kEmail) ?? ""
+    @Published var phoneNumber = UserDefaults.standard.string(forKey: kPhoneNumber) ?? ""
     
-    @Published var orderStatutes = UserDefaults.standard.bool(forKey: kOrderStatus)
+    @Published var orderStatuses = UserDefaults.standard.bool(forKey: kOrderStatuses)
     @Published var passwordChanges = UserDefaults.standard.bool(forKey: kPasswordChanges)
-    @Published var specialOffer = UserDefaults.standard.bool(forKey: kSpecialOffers)
+    @Published var specialOffers = UserDefaults.standard.bool(forKey: kSpecialOffers)
     @Published var newsletter = UserDefaults.standard.bool(forKey: kNewsletter)
     
     
@@ -35,9 +37,9 @@ class ViewModel: ObservableObject {
     
     @Published var searchText = ""
     
-    func validateUserInput(firstName: String, lastName: String, email: String) -> Bool {
+    func validateUserInput(firstName: String, lastName: String, email: String, phoneNumber: String) -> Bool {
         guard !firstName.isEmpty && !lastName.isEmpty && !email.isEmpty else {
-            errorMessage = "All fields are required."
+            errorMessage = "All fields are required"
             errorMessageShow = true
             return false
         }
@@ -57,11 +59,15 @@ class ViewModel: ObservableObject {
         }
         
         guard email[1].contains(".") else {
-                errorMessage = "Invalid email address"
-                errorMessageShow = true
-                return false
+            errorMessage = "Invalid email address"
+            errorMessageShow = true
+            return false
         }
-        
+        guard phoneNumber.first == "+" && phoneNumber.dropFirst().allSatisfy({$0.isNumber}) || phoneNumber.isEmpty else {
+            errorMessage = "Invalid phone number format."
+            errorMessageShow = true
+            return false
+        }
         errorMessageShow = false
         errorMessage = ""
         return true
