@@ -14,7 +14,7 @@ struct Header: View {
         NavigationStack {
             VStack {
                 ZStack {
-                    Image("logo")
+                    Image("Logo")
                     HStack {
                         Spacer()
                         if isLoggedIn {
@@ -31,8 +31,8 @@ struct Header: View {
                 }
             }
         }
-        .frame(maxHeight: 60)
-        .padding(.bottom)
+        .frame(maxHeight: 50)
+        
         .onAppear() {
             if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
                 isLoggedIn = true

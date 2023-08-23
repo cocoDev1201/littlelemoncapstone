@@ -34,10 +34,12 @@ struct Menu: View {
                     if !isKeyboardVisible {
                         withAnimation() {
                             Hero()
-                                .frame(maxHeight: 180)
+                                .frame(maxHeight: 170)
                         }
+                        
                     }
                     TextField("Search menu", text: $searchText)
+                        
                         .textFieldStyle(.roundedBorder)
                 }
                 .padding()

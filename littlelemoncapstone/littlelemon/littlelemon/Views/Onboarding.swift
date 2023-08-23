@@ -28,7 +28,7 @@ struct Onboarding: View {
                     Hero()
                         .padding()
                         .background(Color.primaryColor1)
-                        .frame(maxWidth: .infinity, maxHeight: 240)
+                        .frame(maxWidth: .infinity, maxHeight: 340)
                     VStack {
                         NavigationLink(destination: Home(), isActive: $isLoggedIn) { }
                         Text("First name *")
